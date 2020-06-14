@@ -7,13 +7,18 @@
 		"dev": "next"
 	},
 	"dependencies": {
-		"@types/react": "^16.9.36",
+		"babel-preset-react-app": "^9.1.2",
 		"next": "^9.4.4",
+		"node-sass": "^4.14.1",
 		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"react-dom": "^16.13.1",
+		"sass-loader": "^8.0.2"
 	},
 	"devDependencies": {
 		"@types/node": "^14.0.13",
+		"@types/react": "^16.9.36",
+		"@zeit/next-sass": "^1.0.1",
+		"next-compose-plugins": "^2.2.0",
 		"typescript": "^3.9.5"
 	}
 }
