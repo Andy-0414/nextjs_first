@@ -29,11 +29,11 @@ class Index extends React.Component<Props> {
 			</div>
 		);
 	}
-
 	// 엔터 쳤을 시 Todo 추가
 	handleAppendTodo(e: React.KeyboardEvent) {
 		if (e.key == "Enter") {
 			const { value } = e.target as HTMLInputElement;
+			// store 사용
 			this.props.store.addTodo({
 				name: value,
 				isFinished: false,
