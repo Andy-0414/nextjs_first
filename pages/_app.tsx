@@ -1,15 +1,14 @@
 import "./app.scss";
 
-import App from "next/app";
-import React from "react";
+import { Provider } from "mobx-react";
+import { useStore } from "../store";
 
-export default class NextFirst extends App {
-	render() {
-		const { Component, pageProps } = this.props;
-		return (
-			<Component>
-				<Component {...pageProps} />
-			</Component>
-		);
-	}
+export default function App({ Component, pageProps }) {
+	const store = useStore();
+
+	return (
+		<Provider store={store}>
+			<Component {...pageProps} />
+		</Provider>
+	);
 }
