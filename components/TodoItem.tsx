@@ -26,11 +26,14 @@ class TodoItem extends React.Component<Props> {
 			</li>
 		);
 	}
+
+	// TodoItem 삭제
 	handleRemoveThis() {
 		let { item, store } = this.props;
 
 		store.removeTodo(item);
 	}
+	// TodoItem 완료 처리
 	handleTodoFinish() {
 		let { item } = this.props;
 		item.isFinished = !item.isFinished;

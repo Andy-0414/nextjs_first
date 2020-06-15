@@ -12,21 +12,25 @@ interface Props {
 @inject("store")
 @observer
 class Index extends React.Component<Props> {
+	inputEl: HTMLInputElement;
+	// 생성자
 	constructor(props) {
 		super(props);
 		this.handleAppendTodo = this.handleAppendTodo.bind(this);
 	}
+	// 랜더링
 	render() {
-		// const { todoStore } = this.props;
 		return (
 			<div id="app">
 				<div className="todo">
-					<input type="text" className="todo__input" onKeyPress={this.handleAppendTodo} />
+					<input type="text" className="todo__input" onKeyPress={this.handleAppendTodo} ref={(el) => (this.inputEl = el)} />
 					<TodoList list={this.props.store.todolist}></TodoList>
 				</div>
 			</div>
 		);
 	}
+
+	// 엔터 쳤을 시 Todo 추가
 	handleAppendTodo(e: React.KeyboardEvent) {
 		if (e.key == "Enter") {
 			const { value } = e.target as HTMLInputElement;
@@ -34,6 +38,8 @@ class Index extends React.Component<Props> {
 				name: value,
 				isFinished: false,
 			});
+			// value 비움
+			this.inputEl.value = "";
 		}
 	}
 }

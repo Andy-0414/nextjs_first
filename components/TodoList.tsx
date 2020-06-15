@@ -13,6 +13,7 @@ class TodoList extends React.Component<{ list: ITodoItem[] }> {
 	render() {
 		const { list } = this.props;
 
+		// TodoItem 컴포넌트 forEach
 		const todoItemList = list.map((item) => {
 			return <TodoItem item={item} key={item.id}></TodoItem>;
 		});

@@ -10,17 +10,20 @@ let store;
 export class Store {
 	@observable todolist: ITodoItem[] = [];
 
+	// TodoItem 추가
 	@action
 	addTodo(item: ITodoItem) {
 		if (this.todolist.length == 0) item.id = 0;
 		else item.id = this.todolist[this.todolist.length - 1].id + 1;
 		this.todolist.push(item);
 	}
+	// TodoItem 삭제
 	@action
 	removeTodo(item: ITodoItem) {
 		let idx = this.todolist.findIndex((i) => i.id == item.id);
 		if (idx != -1) this.todolist.splice(idx, 1);
 	}
+	// TodoItem 갱신
 	@action
 	updateTodo(item: ITodoItem) {
 		let idx = this.todolist.findIndex((i) => i.id == item.id);
@@ -28,6 +31,7 @@ export class Store {
 	}
 }
 
+// store 생성 또는 로드 함수
 function initializeStore() {
 	const _store = store ?? new Store();
 
