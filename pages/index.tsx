@@ -16,18 +16,27 @@ class Index extends React.Component<Props> {
 	// 생성자
 	constructor(props) {
 		super(props);
+		this.testAxios = this.testAxios.bind(this);
 		this.handleAppendTodo = this.handleAppendTodo.bind(this);
 	}
 	// 랜더링
 	render() {
 		return (
 			<div id="app">
+				<button onClick={this.testAxios}>testAxios</button>
 				<div className="todo">
 					<input type="text" className="todo__input" onKeyPress={this.handleAppendTodo} ref={(el) => (this.inputEl = el)} />
 					<TodoList list={this.props.store.todolist}></TodoList>
 				</div>
 			</div>
 		);
+	}
+	async testAxios() {
+		try {
+			console.log(await this.props.store.testAxios());
+		} catch {
+			console.log("connect fail");
+		}
 	}
 	// 엔터 쳤을 시 Todo 추가
 	handleAppendTodo(e: React.KeyboardEvent) {

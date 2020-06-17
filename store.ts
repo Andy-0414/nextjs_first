@@ -2,6 +2,7 @@ import { action, observable, computed, runInAction } from "mobx";
 import { useStaticRendering } from "mobx-react";
 import { useMemo } from "react";
 import { ITodoItem } from "./components/TodoList";
+import Axios from "axios";
 
 useStaticRendering(typeof window === "undefined");
 
@@ -28,6 +29,12 @@ export class Store {
 	updateTodo(item: ITodoItem) {
 		let idx = this.todolist.findIndex((i) => i.id == item.id);
 		if (idx != -1) this.todolist[idx] = item;
+	}
+
+	@action
+	async testAxios(): Promise<Number> {
+		let result = Number((await Axios.get("http://hangang.dkserver.wo.tc/")).data.temp);
+		return result;
 	}
 }
 
