@@ -24,6 +24,7 @@ class Index extends React.Component<Props> {
 		return (
 			<div id="app">
 				<button onClick={this.testAxios}>testAxios</button>
+				<Link href="routertest">RouterTest</Link>
 				<div className="todo">
 					<input type="text" className="todo__input" onKeyPress={this.handleAppendTodo} ref={(el) => (this.inputEl = el)} />
 					<TodoList list={this.props.store.todolist}></TodoList>
